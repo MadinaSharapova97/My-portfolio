@@ -11,12 +11,12 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-10">
       <nav aria-label="Main navigation" className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 lg:px-8">
-        <a href="#home" className="text-xl font-semibold tracking-tight text-white transition-colors hover:text-[#56d2ff]">
+        <a href="#home" className="portfolio-name inline-block w-[65px] relative text-xl font-semibold  text-white hover:text-[#56d2ff]">
           Madina.
         </a>
         <div className="hidden items-center gap-7 md:flex">
           {navigationItems.map((item) => (
-            <a key={item.href} href={item.href} className="link-animation relative text-white">
+            <a key={item.href} href={item.href} className="link-animation relative text-white hover:text-[#56d2ff]">
               {item.label}
             </a>
           ))}

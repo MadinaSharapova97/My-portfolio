@@ -3,28 +3,45 @@
   width: 32.8rem;
 }
 
+h1 {
+  position: relative;
+  color: transparent;
+}
+
+h1::before {
+  content: "Hi, It's Madina";
+  position: absolute;
+  top: 0;
+  font-size: 50px;
+  font-family: sans-serif, Arial;
+  font-weight: 700;
+  width: 0%;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: showRight 1s ease 1.3s forwards
+}
+
 .text-animate h3 {
   font-family: Arial, sans-serif;
   display: block;
   font-size: 3.2rem;
   font-weight: 700;
   line-height: 1.05;
-
   color: transparent;
-  -webkit-text-stroke: .8px #56d2ff;
-
+  -webkit-text-stroke: .8px var(--main-color);
   letter-spacing: -0.02em;
 }
 
 .home-info::before {
-  content: attr(data-text);
+  content: "Frontend Developer";
   position: absolute;
   width: 0%;
-  border-right: 2px solid #56d2ff;
-  color: #56d2ff;
+  border-right: 2px solid var(--main-color);
+  color: var(--main-color);
   white-space: nowrap;
   overflow: hidden;
-  animation: fill-text 8s linear infinite;
+  animation: fill-text 8s linear 2s infinite;
 
 }
 
@@ -34,6 +51,7 @@
   100% {
     width: 0%;
   }
+
   70%,
   90% {
     width: 90%;
@@ -46,8 +64,8 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border: .2rem solid #56d2ff;
-  color: #56d2ff;
+  border: .2rem solid var(--main-color);
+  color: var(--main-color);
   width: 15rem;
   height: 100%;
   background: transparent;
@@ -66,7 +84,7 @@
   left: 0;
   width: 0%;
   height: 100%;
-  background-color: #56d2ff;
+  background-color: var(--main-color);
   border-radius: 5px;
   z-index: -1;
   transition: .5s;

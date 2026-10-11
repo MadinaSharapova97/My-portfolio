@@ -1,27 +1,45 @@
+.portfolio-name{
+    color: transparent;
+}
+.portfolio-name::before {
+    content: 'Madina.';
+    position: absolute;
+    width: 0%;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: showRight 1s ease .5s forwards
+}
+
+.link-animation {
+    transition: .8s;
+}
+
 .link-animation::before,
 .link-animation::after {
     content: "";
     position: absolute;
     width: 0;
     height: 2px;
-    background:#56d2ff;
+    background: var(--main-color);
     transition: .5s;
     opacity: 0;
 }
+
 .link-animation::after {
     right: 0;
     bottom: 0;
 }
-.link-animation::before{
+
+.link-animation::before {
     left: 0;
     top: 0;
 }
-.link-animation:hover::before, .link-animation:hover::after {
+
+.link-animation:hover::before,
+.link-animation:hover::after {
     width: 100%;
     opacity: 1;
     transition: .5s;
 }
-/* .link-animation:hover {
-    color: #56d2ff;
-    transition: .5s;
-} */
+

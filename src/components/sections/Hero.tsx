@@ -16,13 +16,14 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#07141f]/92 via-[#0b2434]/80 via-37% to-transparent" />
 
       <div className="mx-auto flex min-h-screen max-w-6xl items-center px-6 pb-16 pt-28 lg:px-8">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl main-info">
 
-          <h1 className="text-4xl font-semibold tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl">
-            Hi, It&apos;s Madina
+          <h1 className="text-4xl font-semibold relative inline-block w-[350px] sm:text-5xl lg:text-6xl">
+            {/* Hi, It&apos;s Madina */}
+            Hi, It's Madina
           </h1>
           <div className="text-animate">
-            <h3 data-text="Frontend Developer" className="home-info mt-2">Frontend Developer</h3>
+            <h3 className="home-info mt-2">Frontend Developer</h3>
           </div>
           <p className="mt-3 max-w-xl text-lg leading-8 text-zinc-300 sm:text-xl">
             I create modern, fast, and user-friendly websites
