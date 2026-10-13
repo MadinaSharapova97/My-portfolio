@@ -1,38 +1,49 @@
+
 import Image from "next/image";
-import "./hero.css"
+import "./hero.css";
 
 export function Hero() {
   return (
-    <section id="home" className="relative isolate min-h-screen overflow-hidden bg-[#09090b]">
+    <section
+      id="home"
+      className="hero-section relative isolate min-h-screen overflow-hidden"
+    >
+      {/* Background image */}
       <Image
-        src="/images/profile/Madina.png"
+        src="/images/profile/Madina1.png"
         alt="Madina, Frontend Developer"
         fill
         priority
         sizes="100vw"
-        className="-z-20 object-cover object-[68%_center]"
+        className="hero-image -z-20 object-cover"
       />
 
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#07141f]/92 via-[#0b2434]/80 via-37% to-transparent" />
+      {/* Theme-aware overlay */}
+      <div className="hero-overlay absolute inset-0 -z-10" />
 
-      <div className="mx-auto flex min-h-screen max-w-6xl items-center px-6 pb-16 pt-28 lg:px-8">
-        <div className="max-w-2xl main-info">
-
-          <h1 className="text-4xl font-semibold relative inline-block w-[350px] sm:text-5xl lg:text-6xl">
-            {/* Hi, It&apos;s Madina */}
-            Hi, It's Madina
+      {/* Hero content */}
+      <div className="mx-auto flex min-h-screen w-full max-w-6xl items-center px-5 pb-16 pt-28 sm:px-8 lg:px-8">
+        <div className="main-info w-full max-w-2xl">
+          <h1 className="hero-title reveal-right reveal-2">
+            Hi, I&apos;m Madina
           </h1>
-          <div className="text-animate">
-            <h3 className="home-info mt-2">Frontend Developer</h3>
+
+          <div className="text-animate reveal-right reveal-3">
+            <h3 className="home-info">
+              Frontend Developer
+            </h3>
           </div>
-          <p className="mt-3 max-w-xl text-lg leading-8 text-zinc-300 sm:text-xl">
+
+          <p className="hero-description reveal-right reveal-4 mt-3 max-w-xl">
             I create modern, fast, and user-friendly websites
           </p>
+
           <a
             href="#projects"
-            className="btn mt-4"
+            className="btn reveal-right reveal-5 mt-5"
           >
-            View my work <span aria-hidden="true">↗</span>
+            View my work
+            <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>

@@ -1,45 +1,441 @@
-.portfolio-name{
-    color: transparent;
+
+/* ================= NAVBAR ================= */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+
+  background: transparent;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
+
+.navbar-container {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 1152px;
+  min-height: 76px;
+
+  margin: 0 auto;
+  padding: 16px 32px;
+}
+
+/* ================= LOGO ================= */
+
+.portfolio-name {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+
+  color: transparent;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
 .portfolio-name::before {
-    content: 'Madina.';
-    position: absolute;
-    width: 0%;
-    color: white;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: showRight 1s ease .5s forwards
+  content: "Madina.";
+
+  position: absolute;
+  inset: 0 auto 0 0;
+
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+
+  color: var(--foreground);
+
+  animation: navShowRight 0.8s ease 0.5s forwards;
+}
+
+.portfolio-name:hover::before {
+  color: var(--main-color);
+}
+
+/* ================= DESKTOP LINKS ================= */
+
+.desktop-navigation {
+  display: flex;
+  align-items: center;
+  gap: 28px;
 }
 
 .link-animation {
-    transition: .8s;
+  position: relative;
+  padding: 8px 0;
+
+  color: var(--foreground);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.link-animation:hover {
+  color: var(--main-color);
 }
 
 .link-animation::before,
 .link-animation::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: var(--main-color);
-    transition: .5s;
-    opacity: 0;
-}
+  content: "";
 
-.link-animation::after {
-    right: 0;
-    bottom: 0;
+  position: absolute;
+  left: 0;
+
+  width: 0;
+  height: 2px;
+
+  background: var(--main-color);
+  opacity: 0;
+
+  transition:
+    width 0.35s ease,
+    opacity 0.35s ease;
 }
 
 .link-animation::before {
-    left: 0;
-    top: 0;
+  top: 0;
+}
+
+.link-animation::after {
+  bottom: 0;
 }
 
 .link-animation:hover::before,
 .link-animation:hover::after {
-    width: 100%;
-    opacity: 1;
-    transition: .5s;
+  width: 100%;
+  opacity: 1;
 }
 
+/* ================= REVEAL ANIMATIONS ================= */
+
+.nav-reveal {
+  clip-path: inset(0 100% 0 0);
+  animation: navShowElement 0.65s ease-out forwards;
+}
+
+.nav-item-1 {
+  animation-delay: 1.8s;
+}
+
+.nav-item-2 {
+  animation-delay: 2s;
+}
+
+.nav-item-3 {
+  animation-delay: 2.2s;
+}
+
+.nav-item-4 {
+  animation-delay: 2.4s;
+}
+
+.nav-item-5 {
+  animation-delay: 2.6s;
+}
+
+@keyframes navShowRight {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes navShowElement {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0);
+  }
+}
+
+/* ================= ACTIONS ================= */
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+  padding: 5px;
+
+  border: 3px solid var(--foreground);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--foreground);
+  cursor: pointer;
+
+   transition:
+   color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.theme-toggle svg {
+  width: 21px;
+  height: 21px;
+}
+
+.theme-toggle:hover {
+  color: var(--main-color);
+  border: 3px solid var(--main-color);
+
+}
+
+/* ================= HAMBURGER ================= */
+
+.menu-toggle {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 19px;
+  height: 2px;
+
+  border-radius: 4px;
+  background: var(--foreground);
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease;
+}
+
+.menu-toggle.is-open span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-open span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ================= MOBILE MENU ================= */
+
+.mobile-navigation {
+  display: none;
+}
+
+/* ================= TABLET & MOBILE ================= */
+
+@media (max-width: 767px) {
+  .navbar-container {
+    min-height: 68px;
+    padding: 12px 24px;
+  }
+
+  .desktop-navigation {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .mobile-navigation {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 8px 24px 18px;
+
+    background: var(--nav-background);
+    border-bottom: 1px solid var(--border-color);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0.25s ease;
+  }
+
+  .mobile-navigation.menu-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    min-height: 50px;
+    padding: 12px 4px;
+
+    color: var(--foreground);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+
+    border-bottom: 1px solid var(--border-color);
+
+    transition:
+      color 0.25s ease,
+      padding-left 0.25s ease;
+  }
+
+  .mobile-nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-nav-link:hover {
+    padding-left: 10px;
+    color: var(--main-color);
+  }
+
+  .mobile-nav-link span {
+    color: var(--muted);
+  }
+
+  .mobile-navigation.menu-open .mobile-nav-link {
+    animation: mobileLinkReveal 0.35s ease both;
+  }
+
+  .mobile-navigation.menu-open .mobile-item-1 {
+    animation-delay: 0.04s;
+  }
+
+  .mobile-navigation.menu-open .mobile-item-2 {
+    animation-delay: 0.09s;
+  }
+
+  .mobile-navigation.menu-open .mobile-item-3 {
+    animation-delay: 0.14s;
+  }
+
+  .mobile-navigation.menu-open .mobile-item-4 {
+    animation-delay: 0.19s;
+  }
+
+  @keyframes mobileLinkReveal {
+    from {
+      opacity: 0;
+      clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+      opacity: 1;
+      clip-path: inset(0);
+    }
+  }
+
+  .mobile-navigation:not(.menu-open) .mobile-nav-link {
+    animation: none;
+  }
+
+  .theme-toggle.nav-reveal {
+    animation-delay: 1s;
+  }
+}
+
+/* ================= SMALL PHONES ================= */
+
+@media (max-width: 380px) {
+  .navbar-container {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .portfolio-name {
+    font-size: 1.15rem;
+  }
+
+  .navbar-actions {
+    gap: 8px;
+  }
+
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mobile-navigation {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}
+
+/* ================= ACCESSIBILITY ================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-reveal,
+  .portfolio-name::before,
+  .mobile-navigation.menu-open .mobile-nav-link {
+    animation: none;
+    clip-path: none;
+  }
+
+  .portfolio-name::before {
+    width: 100%;
+  }
+
+  .mobile-navigation {
+    transition: none;
+  }
+
+  .link-animation,
+  .link-animation::before,
+  .link-animation::after,
+  .menu-toggle span,
+  .theme-toggle {
+    transition: none;
+  }
+}
