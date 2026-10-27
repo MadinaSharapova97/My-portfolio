@@ -1,0 +1,172 @@
+.about-section {
+  position: relative;
+  padding: 100px 24px;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.about-container {
+  width: 100%;
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 16px 32px;
+}
+
+.about-content {
+  max-width: 850px;
+}
+
+.about-label {
+  margin-bottom: 12px;
+  color: var(--main-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.about-title {
+  margin-bottom: 28px;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.about-title span {
+  color: var(--main-color);
+}
+
+/* showRight reveal animation */
+.reveal-title,
+.reveal-description,
+.reveal-skills {
+  clip-path: inset(0 100% 0 0);
+}
+
+.about-section.is-visible .reveal-title {
+  animation: showRight 1.4s ease 1s forwards;
+}
+
+.about-section.is-visible .reveal-description {
+  animation: showRight 1.6s ease 1.3s forwards;
+}
+
+.about-section.is-visible .reveal-skills {
+  animation: showRight 1.8s ease 1.6s forwards;
+}
+
+.about-description {
+  color: var(--foreground);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.about-description p+p {
+  margin-top: 18px;
+}
+
+.about-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.about-skills span {
+  position: relative;
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--main-color);
+  font-size: 0.85rem;
+  background: var(--background);
+  isolation: isolate;
+  z-index: 0;
+}
+
+.about-skills span::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 75%,
+    var(--main-color) 85%,
+    transparent 100%
+  );
+  z-index: -2;
+  animation: rotate-border 3s linear infinite;
+}
+
+.about-skills span::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: var(--background);
+  z-index: -1;
+}
+
+.about-skills span.reverse-animation::before{
+  animation-direction: reverse;
+
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-border {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes showRight {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@media (max-width: 767px) {
+  .about-section {
+    padding: 76px 20px;
+  }
+
+  .about-title {
+    margin-bottom: 22px;
+  }
+
+  .about-description {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .about-skills {
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .about-skills span {
+    padding: 7px 11px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .about-section.is-visible .reveal-title,
+  .about-section.is-visible .reveal-description,
+  .about-section.is-visible .reveal-skills {
+    animation: none;
+    clip-path: none;
+  }
+}

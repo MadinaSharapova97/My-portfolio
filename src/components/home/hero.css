@@ -108,16 +108,12 @@
 .home-info {
   position: relative;
   display: inline-block;
-  width: fit-content;
-  max-width: 100%;
-  margin: 0;
   color: transparent;
   font-family: Arial, sans-serif;
   font-size: clamp(1.65rem, 4.5vw, 3.2rem);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.035em;
-
   -webkit-text-stroke: 0.8px var(--main-color);
 }
 
@@ -131,11 +127,10 @@
   white-space: nowrap;
   overflow: hidden;
   /* -webkit-text-stroke: 0; */
-  animation: fill-text 8s linear 2s infinite;
+  animation: fill-text 7s linear 1s infinite;
 }
 
 @keyframes fill-text {
-  0%,
   10%,
   100% {
     width: 0;
@@ -143,7 +138,7 @@
 
   70%,
   100% {
-    width: 100%;
+    width: 101%;
   }
 }
 

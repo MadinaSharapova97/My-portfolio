@@ -30,7 +30,7 @@ export function Navbar() {
       >
         <a
           href="#home"
-          className="portfolio-name nav-logo"
+          className="portfolio-name"
           onClick={closeMenu}
         >
           Madina.
