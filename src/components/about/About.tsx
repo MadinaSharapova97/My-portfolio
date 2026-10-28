@@ -1,11 +1,11 @@
-
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import "./about.css";
 
 export function About() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -36,8 +36,30 @@ export function About() {
       className={`about-section ${isVisible ? "is-visible" : ""}`}
     >
       <div className="about-container">
-        <div className="about-content">
+        {/* LEFT SIDE — CONTENT */}
 
+        <div className="about-visual">
+          <div className="about-image-wrapper reveal-image">
+            <div className="about-image-glow" />
+
+            <div className="about-image-circle">
+              <Image
+                src="/images/profile/Madina1.png"
+                alt="Madina, Frontend Developer"
+                fill
+                sizes="(max-width: 767px) 220px, (max-width: 1024px) 280px, 340px"
+                className="about-image"
+              />
+            </div>
+
+            <span className="about-image-ring" />
+          </div>
+        </div>
+
+
+
+        {/* RIGHT SIDE — PORTRAIT */}
+        <div className="about-content">
           <h2 className="about-title reveal-title">
             About <span>Me.</span>
           </h2>
@@ -47,12 +69,6 @@ export function About() {
               Hi, I&apos;m Madina — a frontend developer passionate about
               creating modern, visually appealing, and user-friendly websites.
             </p>
-
-            {/* <p>
-              I studied at Qorako‘l Sanoat va Transport kasb-hunar kolleji
-              and continue to develop my frontend skills independently
-              through hands-on projects and continuous learning.
-            </p> */}
 
             <p>
               I enjoy turning ideas into clean, responsive interfaces that

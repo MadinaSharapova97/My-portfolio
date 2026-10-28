@@ -3,26 +3,25 @@
   padding: 100px 24px;
   background: var(--background);
   color: var(--foreground);
+  overflow: hidden;
 }
 
 .about-container {
   width: 100%;
   max-width: 1152px;
   margin: 0 auto;
-  padding: 16px 32px;
+  padding: 16px 0;
+
+  display: grid;
+  grid-template-columns:minmax(280px, 0.8fr) minmax(0, 1.5fr) ;
+  align-items: center;
+  gap: 64px;
 }
+
+/* ================= CONTENT ================= */
 
 .about-content {
-  max-width: 850px;
-}
-
-.about-label {
-  margin-bottom: 12px;
-  color: var(--main-color);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  min-width: 0;
 }
 
 .about-title {
@@ -37,24 +36,7 @@
   color: var(--main-color);
 }
 
-/* showRight reveal animation */
-.reveal-title,
-.reveal-description,
-.reveal-skills {
-  clip-path: inset(0 100% 0 0);
-}
-
-.about-section.is-visible .reveal-title {
-  animation: showRight 1.4s ease 1s forwards;
-}
-
-.about-section.is-visible .reveal-description {
-  animation: showRight 1.6s ease 1.3s forwards;
-}
-
-.about-section.is-visible .reveal-skills {
-  animation: showRight 1.8s ease 1.6s forwards;
-}
+/* ================= DESCRIPTION ================= */
 
 .about-description {
   color: var(--foreground);
@@ -62,9 +44,11 @@
   line-height: 1.9;
 }
 
-.about-description p+p {
+.about-description p + p {
   margin-top: 18px;
 }
+
+/* ================= SKILLS ================= */
 
 .about-skills {
   display: flex;
@@ -78,14 +62,15 @@
   display: inline-block;
   padding: 8px 14px;
   border-radius: 999px;
-  color: var(--main-color);
+  color: var(--background);
   font-size: 0.85rem;
-  background: var(--background);
+  background: var(--main-color);
   isolation: isolate;
   z-index: 0;
+  
 }
 
-.about-skills span::before {
+/* .about-skills span::before {
   content: "";
   position: absolute;
   inset: -1px;
@@ -107,11 +92,10 @@
   border-radius: inherit;
   background: var(--background);
   z-index: -1;
-}
+} */
 
-.about-skills span.reverse-animation::before{
+.about-skills span.reverse-animation::before {
   animation-direction: reverse;
-
 }
 
 @property --angle {
@@ -126,6 +110,104 @@
   }
 }
 
+/* ================= PORTRAIT ================= */
+
+.about-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.about-image-wrapper {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 340px);
+  aspect-ratio: 1;
+}
+
+/* Soft cyan glow behind the portrait */
+
+.about-skills span {
+  position: relative;
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  color: var(--background);
+  font-size: 0.85rem;
+  background: var(--main-color);
+}
+
+/* Circular image */
+
+.about-image-circle {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+  z-index: 1;
+}
+
+/* Keep the portrait centered */
+
+.about-image {
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
+}
+
+.about-image-wrapper:hover .about-image {
+  transform: scale(1.04);
+}
+
+/* Thin outer ring */
+
+.about-image-ring {
+  position: absolute;
+  inset: 0;
+  border-top: 2px solid var(--main-color);
+  border-bottom: 2px solid var(--main-color);
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-radius: 50%;
+  opacity: 0.45;
+  pointer-events: none;
+  animation: AboutImageRingSpinner 6s linear infinite;
+}
+
+/* ================= REVEAL ANIMATIONS ================= */
+
+.reveal-title,
+.reveal-description,
+.reveal-skills {
+  clip-path: inset(0 100% 0 0);
+}
+
+.reveal-image {
+  opacity: 0;
+  transform: translateX(45px) scale(0.96);
+}
+
+.about-section.is-visible .reveal-title {
+  animation: showRight 1.4s ease 0.2s forwards;
+}
+
+.about-section.is-visible .reveal-description {
+  animation: showRight 1.6s ease 0.5s forwards;
+}
+
+.about-section.is-visible .reveal-skills {
+  animation: showRight 1.8s ease 0.8s forwards;
+}
+
+.about-section.is-visible .reveal-image {
+  animation: imageReveal 1.2s ease 0.5s forwards;
+}
+
 @keyframes showRight {
   from {
     clip-path: inset(0 100% 0 0);
@@ -136,18 +218,73 @@
   }
 }
 
+@keyframes imageReveal {
+  from {
+    opacity: 0;
+    transform: translateX(45px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes AboutImageRingSpinner {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 1024px) {
+  .about-container {
+    grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.7fr);
+    gap: 36px;
+  }
+
+  .about-image-wrapper {
+    width: min(100%, 280px);
+  }
+
+  .about-description {
+    font-size: 0.95rem;
+  }
+}
+
+/* ================= MOBILE ================= */
+
 @media (max-width: 767px) {
   .about-section {
     padding: 76px 20px;
   }
 
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .about-content {
+    order: 2;
+  }
+
+  .about-visual {
+    order: 1;
+  }
+
   .about-title {
     margin-bottom: 22px;
+    font-size: clamp(2.2rem, 9vw, 3rem);
   }
 
   .about-description {
     font-size: 0.95rem;
     line-height: 1.8;
+  }
+
+  .about-description p + p {
+    margin-top: 16px;
   }
 
   .about-skills {
@@ -159,14 +296,49 @@
     padding: 7px 11px;
     font-size: 0.8rem;
   }
+
+  .about-image-wrapper {
+    width: min(72vw, 260px);
+  }
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* ================= SMALL MOBILE ================= */
 
+@media (max-width: 380px) {
+  .about-container {
+    gap: 32px;
+  }
+
+  .about-image-wrapper {
+    width: min(76vw, 220px);
+  }
+
+  .about-skills {
+    gap: 8px;
+  }
+}
+
+/* ================= REDUCED MOTION ================= */
+
+@media (prefers-reduced-motion: reduce) {
   .about-section.is-visible .reveal-title,
   .about-section.is-visible .reveal-description,
   .about-section.is-visible .reveal-skills {
     animation: none;
     clip-path: none;
+  }
+
+  .about-section.is-visible .reveal-image {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .about-skills span::before {
+    animation: none;
+  }
+
+  .about-image {
+    transition: none;
   }
 }

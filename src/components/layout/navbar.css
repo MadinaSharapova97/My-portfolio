@@ -1,14 +1,11 @@
-
 /* ================= NAVBAR ================= */
 
 .site-header {
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
-
   background: transparent;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+
 }
 
 .navbar-container {
@@ -83,7 +80,6 @@
   color: var(--main-color);
 }
 
-.link-animation::before,
 .link-animation::after {
   content: "";
 
@@ -99,17 +95,10 @@
   transition:
     width 0.35s ease,
     opacity 0.35s ease;
+
+    bottom: 0;
 }
 
-.link-animation::before {
-  top: 0;
-}
-
-.link-animation::after {
-  bottom: 0;
-}
-
-.link-animation:hover::before,
 .link-animation:hover::after {
   width: 100%;
   opacity: 1;
@@ -185,8 +174,8 @@
   color: var(--foreground);
   cursor: pointer;
 
-   transition:
-   color 0.25s ease,
+  transition:
+    color 0.25s ease,
     /* background-color 0.25s ease,
     border-color 0.25s ease; */
 }
@@ -215,10 +204,6 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
-
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-
   background: transparent;
   cursor: pointer;
 }
@@ -227,7 +212,6 @@
   display: block;
   width: 19px;
   height: 2px;
-
   border-radius: 4px;
   background: var(--foreground);
 
@@ -275,35 +259,35 @@
     top: calc(100% + 1px);
     left: 0;
     right: 0;
-  
+
     display: flex;
     flex-direction: column;
     padding: 8px 24px 18px;
-  
+
     /* To‘qroq va shaffof fon */
-    background: rgba(9, 20, 29, 0.3);
-  
+    background-color: rgba(9, 20, 29, 0.3);
+
     border-bottom: 1px solid rgba(86, 210, 255, 0.18);
-  
+
     /* Kuchliroq blur */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(4px);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
     visibility: hidden;
-    opacity: 0;
+    /* opacity: 0; */
     pointer-events: none;
-    transform: translateY(-8px);
-  
+    transform: translateX(-8px);
+
     transition:
       opacity 0.25s ease,
-      transform 0.25s ease,
-      visibility 0.25s ease;
+      transform 1s ease,
+      visibility .5s ease;
   }
 
   .mobile-navigation.menu-open {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   .mobile-nav-link {
@@ -416,6 +400,7 @@
 /* ================= ACCESSIBILITY ================= */
 
 @media (prefers-reduced-motion: reduce) {
+
   .nav-reveal,
   .portfolio-name::before,
   .mobile-navigation.menu-open .mobile-nav-link {

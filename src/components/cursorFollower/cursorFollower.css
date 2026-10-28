@@ -1,0 +1,56 @@
+.cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+  
+    width: 28px;
+    height: 28px;
+  
+    border: 1.5px solid var(--main-color);
+    border-radius: 50%;
+  
+    background: color-mix(
+      in srgb,
+      var(--main-color) 8%,
+      transparent
+    );
+  
+    box-shadow: 0 0 20px
+      color-mix(in srgb, var(--main-color) 22%, transparent);
+  
+    pointer-events: none;
+    z-index: 99999;
+  
+    opacity: 0;
+    scale: 1;
+  
+    transition:
+      opacity 0.25s ease,
+      scale 0.3s ease,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+  
+    will-change: transform;
+  }
+  
+  .cursor-follower.cursor-visible {
+    opacity: 1;
+  }
+  
+  .cursor-follower.cursor-hover {
+    scale: 1.5;
+    background: color-mix(
+      in srgb,
+      var(--main-color) 15%,
+      transparent
+    );
+  
+    box-shadow: 0 0 28px
+      color-mix(in srgb, var(--main-color) 35%, transparent);
+  }
+  
+  @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .cursor-follower {
+      display: none;
+    }
+  }
