@@ -33,7 +33,7 @@ export function About() {
     <section
       ref={sectionRef}
       id="about"
-      className={`about-section ${isVisible ? "is-visible" : ""}`}
+      className={`about-section h-screen ${isVisible ? "is-visible" : ""}`}
     >
       <div className="about-container">
         {/* LEFT SIDE — CONTENT */}
@@ -87,7 +87,7 @@ export function About() {
 
           <div className="about-skills reveal-skills">
             <span>Responsive Design</span>
-            <span className="reverse-animation">Clean Code</span>
+            <span>Clean Code</span>
             <span>Continuous Learning</span>
           </div>
         </div>

@@ -1,0 +1,302 @@
+/* ================= PROJECTS SECTION ================= */
+
+.projects-section {
+    width: 100%;
+    padding: 80px 24px;
+    background: var(--background);
+    color: var(--foreground);
+}
+
+.projects-container {
+    width: 100%;
+    max-width: 1152px;
+    margin: 0 auto;
+}
+
+/* ================= TITLE ================= */
+
+.projects-title {
+    margin: 0 0 38px;
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--main-color);
+}
+
+/* ================= PROJECT GRID ================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* ================= PROJECT CARD ================= */
+
+.project-card {
+    position: relative;
+    isolation: isolate;
+    aspect-ratio: 3 / 4;
+    min-width: 0;
+    overflow: hidden;
+
+    border: 1.5px solid var(--main-color);
+    border-radius: 12px;
+    background: var(--surface);
+
+    box-shadow:
+        0 0 8px color-mix(in srgb, var(--main-color) 25%, transparent),
+        0 0 20px color-mix(in srgb, var(--main-color) 10%, transparent);
+
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.projects-section.is-visible .projects-title {
+    animation: showRight 0.8s ease-out both;
+}
+
+.projects-section.is-visible .project-card {
+    animation: projectReveal 0.65s ease-out var(--card-delay) forwards;
+}
+
+@keyframes projectReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= PROJECT IMAGE ================= */
+
+.project-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: transform 0.55s ease;
+}
+
+
+
+/* ================= GLOW ================= */
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  
+    border-radius: inherit;
+    background: rgba(4, 10, 22, 0.3);
+  
+    box-shadow: inset 0 0 14px
+      color-mix(in srgb, var(--main-color) 15%, transparent);
+  
+    transition:
+      background 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+
+.project-card:hover {
+    box-shadow:
+        0 0 10px color-mix(in srgb, var(--main-color) 55%, transparent),
+        0 0 28px color-mix(in srgb, var(--main-color) 28%, transparent);
+}
+
+.project-card:hover::before {
+    background: rgba(4, 10, 22, 0.08);
+  
+    box-shadow: inset 0 0 22px
+      color-mix(in srgb, var(--main-color) 28%, transparent);
+  }
+
+/* ================= BOTTOM OVERLAY ================= */
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    display: flex;
+    align-items: flex-end;
+    padding: 24px 20px;
+
+    background: linear-gradient(to top,
+            color-mix(in srgb, var(--background) 98%, transparent) 0%,
+            color-mix(in srgb, var(--background) 88%, transparent) 45%,
+            color-mix(in srgb, var(--main-color) 18%, transparent) 100%);
+
+    opacity: 0;
+    transform: translateY(100%);
+    transition:
+        transform 0.4s ease,
+        opacity 0.35s ease;
+}
+
+.project-card:hover .project-overlay,
+.project-card:focus-within .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-details {
+    width: 100%;
+    transform: translateY(12px);
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-details,
+.project-card:focus-within .project-details {
+    transform: translateY(0);
+}
+
+.project-details h3 {
+    margin: 0 0 6px;
+    color: var(--foreground);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.project-details p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+
+/* ================= PROJECT LINKS ================= */
+
+.project-links {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.project-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border: 1px solid var(--main-color);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--main-color);
+    text-decoration: none;
+
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.project-links a:hover {
+    color: var(--background);
+    background: var(--main-color);
+    transform: translateY(-3px);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--main-color) 40%, transparent);
+}
+
+.project-links a:focus-visible {
+    outline: 2px solid var(--main-color);
+    outline-offset: 4px;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 768px) {
+    .projects-section {
+        padding: 64px 20px;
+    }
+
+    .projects-grid {
+        gap: 20px;
+    }
+
+    .project-overlay {
+        padding: 18px 14px;
+    }
+
+    .project-details p {
+        font-size: 0.82rem;
+    }
+
+    .project-links {
+        margin-top: 12px;
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 560px) {
+    .projects-section {
+        padding: 56px 18px;
+    }
+
+    .projects-title {
+        margin-bottom: 28px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .project-card {
+        aspect-ratio: 4 / 3;
+    }
+
+    /* Touch ekranlarda overlay doim ko'rinadi */
+    .project-overlay {
+        opacity: 1;
+        transform: translateY(0);
+        padding: 18px;
+        background: linear-gradient(to top,
+                color-mix(in srgb, var(--background) 98%, transparent) 0%,
+                color-mix(in srgb, var(--background) 75%, transparent) 55%,
+                transparent 100%);
+    }
+
+    .project-details {
+        transform: none;
+    }
+
+    .project-details h3 {
+        font-size: 1.15rem;
+    }
+
+    .project-details p {
+        font-size: 0.85rem;
+    }
+
+    .project-links a {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* ================= ACCESSIBILITY ================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .projects-title,
+    .project-card {
+        animation: none !important;
+        opacity: 1;
+        transform: none;
+    }
+
+    .project-image,
+    .project-overlay,
+    .project-details,
+    .project-links a {
+        transition: none;
+    }
+}

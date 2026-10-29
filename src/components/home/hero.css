@@ -80,20 +80,6 @@
   animation-delay: 1.4s;
 }
 
-/* Additional elements */
-/* .reveal-6 {
-  animation-delay: 1.7s;
-} */
-
-@keyframes showRight {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
 
 /* ================= FRONTEND DEVELOPER ================= */
 

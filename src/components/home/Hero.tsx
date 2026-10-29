@@ -1,6 +1,7 @@
 
 import Image from "next/image";
 import "./hero.css";
+import { SocialLinks } from "../ui/SocialLinks";
 
 export function Hero() {
   return (
@@ -45,6 +46,7 @@ export function Hero() {
             View my work
             <span aria-hidden="true">↗</span>
           </a>
+          
         </div>
       </div>
     </section>

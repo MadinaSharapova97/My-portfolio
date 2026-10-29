@@ -1,0 +1,165 @@
+/* ================= SKILLS ================= */
+
+.skills-section {
+    width: 100%;
+    padding:  24px;
+    background: var(--background);
+    color: var(--foreground);
+}
+
+.skills-container {
+    width: 80%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Title */
+
+.skills-title {
+    margin: 0 0 30px;
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--foreground);
+    /* animation: showRight 1s ease both; */
+}
+
+/* Border box */
+
+.skills-box {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+    padding: 25px 22px;
+
+    border: 2px solid var(--main-color);
+    border-radius: 8px;
+    background: var(--surface);
+
+    animation: skillsFadeIn 1s ease 0.15s both;
+}
+
+/* Individual skill */
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    animation: skillsFadeIn 0.6s ease both;
+    animation-delay: var(--skill-delay);
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.skill-info span:last-child {
+    color: var(--main-color);
+}
+
+/* Progress bar */
+
+.skill-track {
+    width: 100%;
+    height: 7px;
+    overflow: hidden;
+    border-radius: 999px;
+
+    background: color-mix(in srgb,
+            var(--main-color) 12%,
+            var(--surface));
+}
+
+.skill-progress {
+    width: var(--skill-level);
+    height: 100%;
+    border-radius: inherit;
+
+    background: var(--main-color);
+
+    box-shadow: 0 0 12px color-mix(in srgb, var(--main-color) 35%, transparent);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    animation: skillFill 1.7s ease-out both;
+    animation-delay: calc(0.3s + var(--skill-delay));
+}
+
+.reveal-title,
+.reveal-progress {
+    clip-path: inset(0 100% 0 0);
+}
+
+.skills-section.is-visible .reveal-title {
+    animation: showRight 1.4s ease 0.4s forwards;
+}
+
+.skills-section.is-visible .reveal-progress {
+    animation: showRight 1s ease 0.8s forwards;
+}
+
+.skills-section.is-visible .skill-progress {
+    animation: skillFill 1.7s ease-out both;
+    animation-delay: calc(0.8s + var(--skill-delay));
+}
+
+/* Animations */
+
+@keyframes skillsFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes skillFill {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+    .skills-section {
+        padding: 60px 18px;
+    }
+
+    .skills-box {
+        gap: 24px;
+        padding: 24px 16px;
+    }
+
+    .skill-track {
+        height: 6px;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .skills-title,
+    .skills-box,
+    .skill-item,
+    .skill-progress {
+        animation: none;
+    }
+
+    .skill-progress {
+        transform: scaleX(1);
+    }
+}

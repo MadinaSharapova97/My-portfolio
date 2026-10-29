@@ -23,9 +23,9 @@
 
 :root[data-theme="light"] {
   /* Light mode — existing variables */
-  --hero-overlay-start: rgba(245, 248, 252, 0.97);
-  --hero-overlay-middle: rgba(245, 248, 252, 0.85);
-  --hero-overlay-end: rgba(245, 248, 252, 0.3);
+  --hero-overlay-start: rgba(217, 224, 232, 0.97);
+  --hero-overlay-middle: rgba(188, 196, 206, 0.85);
+  --hero-overlay-end: rgba(160, 164, 168, 0.3);
   --hero-title: #172b3a;
   --hero-description: #536575;
   --foreground: #172b3a;
@@ -82,3 +82,14 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
+
+@keyframes showRight {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+ 

@@ -58,57 +58,15 @@
 }
 
 .about-skills span {
-  position: relative;
   display: inline-block;
   padding: 8px 14px;
   border-radius: 999px;
   color: var(--background);
   font-size: 0.85rem;
-  background: var(--main-color);
-  isolation: isolate;
-  z-index: 0;
+  border: 2px solid var(--main-color);
   
 }
 
-/* .about-skills span::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from var(--angle),
-    transparent 75%,
-    var(--main-color) 85%,
-    transparent 100%
-  );
-  z-index: -2;
-  animation: rotate-border 3s linear infinite;
-}
-
-.about-skills span::after {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  background: var(--background);
-  z-index: -1;
-} */
-
-.about-skills span.reverse-animation::before {
-  animation-direction: reverse;
-}
-
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes rotate-border {
-  to {
-    --angle: 360deg;
-  }
-}
 
 /* ================= PORTRAIT ================= */
 
@@ -160,75 +118,48 @@
   transition: transform 0.6s ease;
 }
 
-.about-image-wrapper:hover .about-image {
-  transform: scale(1.04);
-}
+
 
 /* Thin outer ring */
 
 .about-image-ring {
   position: absolute;
   inset: 0;
-  border-top: 2px solid var(--main-color);
-  border-bottom: 2px solid var(--main-color);
-  border-left: 2px solid transparent;
-  border-right: 2px solid transparent;
+  border-top: 3px solid var(--main-color);
+  border-bottom: 3px solid var(--main-color);
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
   border-radius: 50%;
   opacity: 0.45;
   pointer-events: none;
-  animation: AboutImageRingSpinner 6s linear infinite;
+  animation: AboutImageRingSpinner 7s linear infinite;
 }
 
 /* ================= REVEAL ANIMATIONS ================= */
 
 .reveal-title,
 .reveal-description,
-.reveal-skills {
+.reveal-skills,
+.reveal-image {
   clip-path: inset(0 100% 0 0);
 }
 
-.reveal-image {
-  opacity: 0;
-  transform: translateX(45px) scale(0.96);
-}
-
 .about-section.is-visible .reveal-title {
-  animation: showRight 1.4s ease 0.2s forwards;
-}
-
-.about-section.is-visible .reveal-description {
-  animation: showRight 1.6s ease 0.5s forwards;
-}
-
-.about-section.is-visible .reveal-skills {
-  animation: showRight 1.8s ease 0.8s forwards;
+  animation: showRight 1.4s ease 0.4s forwards;
 }
 
 .about-section.is-visible .reveal-image {
-  animation: imageReveal 1.2s ease 0.5s forwards;
+  animation: showRight 1.6s ease 0.5s forwards;
 }
 
-@keyframes showRight {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-
-  to {
-    clip-path: inset(0 0 0 0);
-  }
+.about-section.is-visible .reveal-description {
+  animation: showRight 1.6s ease 0.8s forwards;
 }
 
-@keyframes imageReveal {
-  from {
-    opacity: 0;
-    transform: translateX(45px) scale(0.96);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
+.about-section.is-visible .reveal-skills {
+  animation: showRight 2s ease 1s forwards;
 }
+
 
 @keyframes AboutImageRingSpinner {
   100% {

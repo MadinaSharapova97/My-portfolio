@@ -1,7 +1,7 @@
 /* ================= NAVBAR ================= */
 
 .site-header {
-  position: fixed;
+  position: absolute;
   inset: 0 0 auto;
   z-index: 50;
   background: transparent;
