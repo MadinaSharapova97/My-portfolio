@@ -3,7 +3,9 @@
 .projects-section {
     width: 100%;
     padding: 80px 24px;
-    background: var(--background);
+    background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--main-color) 9%, transparent), transparent 58%),
+    var(--background);
     color: var(--foreground);
 }
 
@@ -22,6 +24,7 @@
     font-weight: 700;
     letter-spacing: -0.04em;
     color: var(--main-color);
+    clip-path: inset(0 100% 0 0);
 }
 
 /* ================= PROJECT GRID ================= */
@@ -49,23 +52,33 @@
         0 0 8px color-mix(in srgb, var(--main-color) 25%, transparent),
         0 0 20px color-mix(in srgb, var(--main-color) 10%, transparent);
 
-    opacity: 0;
-    transform: translateY(18px);
 }
 
 .projects-section.is-visible .projects-title {
-    animation: showRight 0.8s ease-out both;
+    animation: showRight 1.5s ease-out .5s both;
 }
 
-.projects-section.is-visible .project-card {
-    animation: projectReveal 0.65s ease-out var(--card-delay) forwards;
+.reveal-1,
+.reveal-2,
+.reveal-3,
+.reveal-4 {
+    clip-path: inset(0 100% 0 0);
 }
 
-@keyframes projectReveal {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.reveal-1 {
+    animation: showRight 2s ease 1s forwards;
+}
+
+.reveal-2 {
+    animation: showRight 2.3s ease 1.4s forwards;
+}
+
+.reveal-3 {
+    animation: showRight 2.6s ease 1.8s forwards;
+}
+
+.reveal-4 {
+    animation: showRight 2.9s ease 2.2s forwards;
 }
 
 /* ================= PROJECT IMAGE ================= */
@@ -75,44 +88,21 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-
     transition: transform 0.55s ease;
 }
 
+.project-card:hover .project-image {
+    transform: scale(1.06);
+}
 
 
 /* ================= GLOW ================= */
 
 .project-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-  
-    border-radius: inherit;
-    background: rgba(4, 10, 22, 0.3);
-  
-    box-shadow: inset 0 0 14px
-      color-mix(in srgb, var(--main-color) 15%, transparent);
-  
-    transition:
-      background 0.35s ease,
-      box-shadow 0.35s ease;
-  }
-
-.project-card:hover {
-    box-shadow:
-        0 0 10px color-mix(in srgb, var(--main-color) 55%, transparent),
-        0 0 28px color-mix(in srgb, var(--main-color) 28%, transparent);
-}
-
-.project-card:hover::before {
     background: rgba(4, 10, 22, 0.08);
-  
-    box-shadow: inset 0 0 22px
-      color-mix(in srgb, var(--main-color) 28%, transparent);
-  }
+
+    box-shadow: inset 0 0 22px color-mix(in srgb, var(--main-color) 28%, transparent);
+}
 
 /* ================= BOTTOM OVERLAY ================= */
 
@@ -127,31 +117,14 @@
 
     background: linear-gradient(to top,
             color-mix(in srgb, var(--background) 98%, transparent) 0%,
-            color-mix(in srgb, var(--background) 88%, transparent) 45%,
-            color-mix(in srgb, var(--main-color) 18%, transparent) 100%);
-
-    opacity: 0;
-    transform: translateY(100%);
-    transition:
-        transform 0.4s ease,
-        opacity 0.35s ease;
-}
-
-.project-card:hover .project-overlay,
-.project-card:focus-within .project-overlay {
-    opacity: 1;
-    transform: translateY(0);
+            color-mix(in srgb, var(--background) 78%, transparent) 35%,
+            color-mix(in srgb, var(--background) 15%, transparent) 100%);
 }
 
 .project-details {
     width: 100%;
     transform: translateY(12px);
     transition: transform 0.4s ease;
-}
-
-.project-card:hover .project-details,
-.project-card:focus-within .project-details {
-    transform: translateY(0);
 }
 
 .project-details h3 {

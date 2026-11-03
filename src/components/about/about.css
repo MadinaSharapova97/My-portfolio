@@ -1,7 +1,9 @@
 .about-section {
   position: relative;
   padding: 100px 24px;
-  background: var(--background);
+  background:
+  radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--main-color) 9%, transparent), transparent 58%),
+  var(--background);
   color: var(--foreground);
   overflow: hidden;
 }
@@ -206,12 +208,14 @@
 
   .about-title {
     margin-bottom: 22px;
+    text-align: center;
     font-size: clamp(2.2rem, 9vw, 3rem);
   }
 
   .about-description {
     font-size: 0.95rem;
     line-height: 1.8;
+    text-align: center;
   }
 
   .about-description p + p {
@@ -219,12 +223,15 @@
   }
 
   .about-skills {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
     gap: 8px;
     margin-top: 24px;
   }
 
   .about-skills span {
-    padding: 7px 11px;
+    padding: 7px 9px;
     font-size: 0.8rem;
   }
 

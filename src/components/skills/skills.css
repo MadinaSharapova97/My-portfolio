@@ -3,7 +3,9 @@
 .skills-section {
     width: 100%;
     padding:  24px;
-    background: var(--background);
+    background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--main-color) 9%, transparent), transparent 58%),
+    var(--background);
     color: var(--foreground);
 }
 

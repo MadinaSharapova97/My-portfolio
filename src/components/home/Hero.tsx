@@ -1,7 +1,6 @@
 
 import Image from "next/image";
 import "./hero.css";
-import { SocialLinks } from "../ui/SocialLinks";
 
 export function Hero() {
   return (
