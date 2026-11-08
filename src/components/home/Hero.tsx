@@ -25,7 +25,7 @@ export function Hero() {
       <div className="mx-auto flex min-h-screen w-full max-w-6xl items-center px-5 pb-16 pt-28 sm:px-8 lg:px-8">
         <div className="main-info w-full max-w-2xl">
           <h1 className="hero-title reveal-right reveal-2">
-            Hi, I&apos;m Madina
+            Hi, It&apos;s Madina
           </h1>
 
           <div className="text-animate reveal-right reveal-3">

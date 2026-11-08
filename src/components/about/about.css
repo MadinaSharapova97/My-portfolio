@@ -8,6 +8,15 @@
   overflow: hidden;
 }
 
+.about-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.2s ease-out;
+}
+
+.about-section.is-visible .about-reveal {
+  clip-path: inset(0 0 0 0);
+}
+
 .about-container {
   width: 100%;
   max-width: 1152px;
@@ -139,28 +148,9 @@
 
 /* ================= REVEAL ANIMATIONS ================= */
 
-.reveal-title,
-.reveal-description,
-.reveal-skills,
-.reveal-image {
-  clip-path: inset(0 100% 0 0);
-}
 
-.about-section.is-visible .reveal-title {
-  animation: showRight 1.4s ease 0.4s forwards;
-}
 
-.about-section.is-visible .reveal-image {
-  animation: showRight 1.6s ease 0.5s forwards;
-}
 
-.about-section.is-visible .reveal-description {
-  animation: showRight 1.6s ease 0.8s forwards;
-}
-
-.about-section.is-visible .reveal-skills {
-  animation: showRight 2s ease 1s forwards;
-}
 
 
 @keyframes AboutImageRingSpinner {

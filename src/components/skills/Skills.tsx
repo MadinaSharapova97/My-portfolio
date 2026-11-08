@@ -17,7 +17,7 @@ const skills = [
 export function Skills() {
 
 
- const sectionRef = useRef(null);
+  const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -44,35 +44,39 @@ export function Skills() {
 
   return (
     <section id="skills"
-    ref={sectionRef}
-     className={`skills-section h-screen ${isVisible ? "is-visible" : ""}`}>
-      <div className="skills-container">
-        <h2 className="skills-title reveal-title">Skills</h2>
+      ref={sectionRef}
+      className={`skills-section h-screen ${isVisible ? "is-visible" : ""}`}>
+      <div className="skills-reveal">
+        <div className="skills-container">
+          <h2 className="skills-title">Skills</h2>
 
-        <div className="skills-box reveal-progress">
-          {skills.map((skill, index) => (
-            <div
-              className="skill-item"
-              key={skill.name}
-              style={
-                {
-                  "--skill-level": `${skill.level}%`,
-                  "--skill-delay": `${index * 0.15}s`,
-                } as React.CSSProperties
-              }
-            >
-              <div className="skill-info">
-                <span>{skill.name}</span>
-                <span>{skill.level}%</span>
-              </div>
+          <div className="skills-box ">
+            {skills.map((skill, index) => (
+              <div
+                className="skill-item"
+                key={skill.name}
+                style={
+                  {
+                    "--skill-level": `${skill.level}%`,
+                    "--skill-delay": `${index * 0.15}s`,
+                  } as React.CSSProperties
+                }
+              >
+                <div className="skill-info">
+                  <span>{skill.name}</span>
+                  <span>{skill.level}%</span>
+                </div>
 
-              <div className="skill-track">
-                <div className="skill-progress" />
+                <div className="skill-track">
+                  <div className="skill-progress" />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
+
+
     </section>
   );
 }

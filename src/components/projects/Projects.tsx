@@ -104,59 +104,63 @@ export function Projects() {
       ref={sectionRef}
       className={`projects-section ${isVisible ? "is-visible" : ""}`}
     >
-      <div className="projects-container">
-        <h2 className="projects-title">View My Work</h2>
 
-        <div className="projects-grid">
-          {projects.map((project, index) => (
-            <article
-              key={project.title}
-              className={` project-card reveal-${index + 1} `}
-              style={
-                {
-                  "--card-delay": `${index * 0.15}s`,
-                } as React.CSSProperties
-              }
-            >
-              <img
-                src={project.image}
-                alt={`${project.title} preview`}
-                className="project-image"
-                loading="lazy"
-              />
+      <div className="projects-reveal">
+        <div className="projects-container">
+          <h2 className="projects-title">View My Work</h2>
 
-              <div className="project-overlay">
-                <div className="project-details">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
+          <div className="projects-grid">
+            {projects.map((project, index) => (
+              <article
+                key={project.title}
+                className={` project-card reveal-${index + 1} `}
+                style={
+                  {
+                    "--card-delay": `${index * 0.15}s`,
+                  } as React.CSSProperties
+                }
+              >
+                <img
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  className="project-image"
+                  loading="lazy"
+                />
 
-                  <div className="project-links">
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`Open ${project.title} live demo`}
-                      title="Live Demo"
-                    >
-                      <ExternalIcon />
-                    </a>
+                <div className="project-overlay">
+                  <div className="project-details">
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
 
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`${project.title} source code on GitHub`}
-                      title="GitHub"
-                    >
-                      <GithubIcon />
-                    </a>
+                    <div className="project-links">
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Open ${project.title} live demo`}
+                        title="Live Demo"
+                      >
+                        <ExternalIcon />
+                      </a>
+
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${project.title} source code on GitHub`}
+                        title="GitHub"
+                      >
+                        <GithubIcon />
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
       </div>
+
     </section>
   );
 }

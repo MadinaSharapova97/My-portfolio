@@ -3,11 +3,18 @@
 .skills-section {
     width: 100%;
     padding:  24px;
-    background:
-    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--main-color) 9%, transparent), transparent 58%),
-    var(--background);
+    background: var(--background);
     color: var(--foreground);
 }
+
+.skills-reveal {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1.2s ease-out;
+  }
+  
+  .skills-section.is-visible .skills-reveal {
+    clip-path: inset(0 0 0 0);
+  }
 
 .skills-container {
     width: 80%;
@@ -95,37 +102,15 @@
     animation-delay: calc(0.3s + var(--skill-delay));
 }
 
-.reveal-title,
-.reveal-progress {
-    clip-path: inset(0 100% 0 0);
-}
 
-.skills-section.is-visible .reveal-title {
-    animation: showRight 1.4s ease 0.4s forwards;
-}
 
-.skills-section.is-visible .reveal-progress {
-    animation: showRight 1s ease 0.8s forwards;
-}
 
 .skills-section.is-visible .skill-progress {
     animation: skillFill 1.7s ease-out both;
-    animation-delay: calc(0.8s + var(--skill-delay));
 }
 
-/* Animations */
+/* Animation */
 
-@keyframes skillsFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 @keyframes skillFill {
     to {

@@ -3,11 +3,17 @@
 .projects-section {
     width: 100%;
     padding: 80px 24px;
-    background:
-    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--main-color) 9%, transparent), transparent 58%),
-    var(--background);
-    color: var(--foreground);
+    background:var(--background)
 }
+
+.projects-reveal {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1.2s ease-out;
+}
+
+.projects-section.is-visible .projects-reveal {
+    clip-path: inset(0 0 0 0);
+  }
 
 .projects-container {
     width: 100%;
@@ -24,7 +30,7 @@
     font-weight: 700;
     letter-spacing: -0.04em;
     color: var(--main-color);
-    clip-path: inset(0 100% 0 0);
+    /* clip-path: inset(0 100% 0 0); */
 }
 
 /* ================= PROJECT GRID ================= */
@@ -54,32 +60,6 @@
 
 }
 
-.projects-section.is-visible .projects-title {
-    animation: showRight 1.5s ease-out .5s both;
-}
-
-.reveal-1,
-.reveal-2,
-.reveal-3,
-.reveal-4 {
-    clip-path: inset(0 100% 0 0);
-}
-
-.reveal-1 {
-    animation: showRight 2s ease 1s forwards;
-}
-
-.reveal-2 {
-    animation: showRight 2.3s ease 1.4s forwards;
-}
-
-.reveal-3 {
-    animation: showRight 2.6s ease 1.8s forwards;
-}
-
-.reveal-4 {
-    animation: showRight 2.9s ease 2.2s forwards;
-}
 
 /* ================= PROJECT IMAGE ================= */
 
@@ -137,6 +117,7 @@
 .project-details p {
     margin: 0;
     color: var(--muted);
+    opacity: 0.85;
     font-size: 0.8rem;
     line-height: 1.45;
 }

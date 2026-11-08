@@ -1,6 +1,10 @@
+'use client';
+
+import { useEffect, useRef, useState } from "react";
 import "./contact.css";
 
 // Replace these four values with your own contact details.
+
 const contactItems = [
   {
     label: "Phone",
@@ -42,52 +46,135 @@ function ContactIcon({ name }: { name: string }) {
 }
 
 export function Contact() {
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+
   return (
-    <section id="contact" className="contact-section">
-      <div className="contact-container">
-        <div className="contact-intro">
-          <p className="contact-eyebrow">GET IN TOUCH</p>
-          <h2 className="contact-title">Let&apos;s Work Together</h2>
-          <p className="contact-description">
-            Have a project in mind or want to work together? Reach out through
-            any of the channels below.
-          </p>
+    <section
+      ref={sectionRef}
+      id="contact"
+      className={`contact-section ${isVisible ? "is-visible" : ""}`}
+    >
+      <div className="contact-reveal">
+        <div className="contact-container">
+          {/* left side */}
+          <div className="contact-intro">
+            <h2 className="contact-title">Let&apos;s Work Together</h2>
 
-          <ul className="contact-list" aria-label="Contact details">
-            {contactItems.map((item) => (
-              <li key={item.label}>
-                <span className="contact-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                    <ContactIcon name={item.icon} />
-                  </svg>
-                </span>
-                <div className="contact-item-copy">
-                  <span className="contact-label">{item.label}</span>
-                  <a
-                    href={item.href}
-                    target={item.href.startsWith("https:") ? "_blank" : undefined}
-                    rel={item.href.startsWith("https:") ? "noreferrer" : undefined}
-                  >
-                    {item.value}
-                  </a>
+            <ul className="contact-list" aria-label="Contact details">
+              {contactItems.map((item) => (
+                <li key={item.label}>
+                  <span className="contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <ContactIcon name={item.icon} />
+                    </svg>
+                  </span>
+                  <div className="contact-item-copy">
+                    <span className="contact-label">{item.label}</span>
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith("https:") ? "_blank" : undefined}
+                      rel={item.href.startsWith("https:") ? "noreferrer" : undefined}
+                    >
+                      {item.value}
+                    </a>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+
+          {/* Right side — Contact Form */}
+          <div className="contact-panel">
+            <div className="contact-form-header">
+              <h3>
+                Send Me a <span>Message</span>
+              </h3>
+            </div>
+
+            <form
+              className="contact-form"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST"
+            >
+              <div className="form-row">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    placeholder="Enter your name"
+                    autoComplete="name"
+                    required
+                  />
                 </div>
-              </li>
-            ))}
-          </ul>
-        </div>
 
-        <div className="contact-panel">
-          <span className="contact-panel-mark" aria-hidden="true">✳</span>
-          <p className="contact-panel-eyebrow">OPEN TO OPPORTUNITIES</p>
-          <h3>Contact <span>Me!</span></h3>
-          <p className="contact-panel-copy">
-            I&apos;m always happy to talk about thoughtful design, frontend work,
-            and new ideas.
-          </p>
-          <div className="contact-panel-line" />
-          <p className="contact-panel-foot">Madina <span>·</span> Frontend Developer</p>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    placeholder="Enter your email"
+                    autoComplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <input
+                  type="text"
+                  id="contact-subject"
+                  name="subject"
+                  placeholder="What is this about?"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  placeholder="Write your message here..."
+                  rows={5}
+                  required
+                />
+              </div>
+
+              <button type="submit" className="contact-submit">
+                Send Message
+                <span aria-hidden="true">↗</span>
+              </button>
+
+
+            </form>
+          </div>
         </div>
       </div>
+
+
     </section>
   );
 }
