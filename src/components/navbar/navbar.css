@@ -112,23 +112,23 @@
 }
 
 .nav-item-1 {
-  animation-delay: 1.8s;
+  animation-delay: 2.6s;
 }
 
 .nav-item-2 {
-  animation-delay: 2s;
+  animation-delay: 3s;
 }
 
 .nav-item-3 {
-  animation-delay: 2.2s;
+  animation-delay: 3.4s;
 }
 
 .nav-item-4 {
-  animation-delay: 2.4s;
+  animation-delay: 3.8s;
 }
 
 .nav-item-5 {
-  animation-delay: 2.6s;
+  animation-delay: 4s;
 }
 
 @keyframes navShowRight {

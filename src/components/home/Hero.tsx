@@ -10,7 +10,7 @@ export function Hero() {
     >
       {/* Background image */}
       <Image
-        src="/images/profile/Madina1.png"
+        src="/images/profile/Madina.png"
         alt="Madina, Frontend Developer"
         fill
         priority

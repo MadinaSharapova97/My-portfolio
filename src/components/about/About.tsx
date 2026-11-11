@@ -46,7 +46,7 @@ export function About() {
 
               <div className="about-image-circle">
                 <Image
-                  src="/images/profile/Madina1.png"
+                  src="/images/profile/AboutMe.webp"
                   alt="Madina, Frontend Developer"
                   fill
                   sizes="(max-width: 767px) 220px, (max-width: 1024px) 280px, 340px"

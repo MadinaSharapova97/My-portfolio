@@ -10,7 +10,7 @@ const projects = [
     title: "Pattify",
     description:
       "A sewing pattern platform designed to make finding styles easier.",
-    image: "/images/projects/pattify.jpg",
+    image: "/images/projects/pattify.webp",
     demo: "https://pattify.vercel.app/",
     github: "https://github.com/MadinaSharapova97/Pattify",
   },
@@ -18,7 +18,7 @@ const projects = [
     title: "Creative Store",
     description:
       "A responsive e-commerce interface with a modern shopping experience.",
-    image: "/images/projects/creative-store.jpg",
+    image: "/images/projects/creative-store.webp",
     demo: "https://creative-store-three.vercel.app/",
     github: "https://github.com/MadinaSharapova97/Creative-Store",
   },
@@ -26,7 +26,7 @@ const projects = [
     title: "Explore Uzbekistan",
     description:
       "A landing page introducing the beauty and destinations of Uzbekistan.",
-    image: "/images/projects/Uzbekistan.jpg",
+    image: "/images/projects/Uzbekistan.webp",
     demo: "https://dapper-tiramisu-47a446.netlify.app/",
     github: "https://github.com/MadinaSharapova97/EXPLORE_UZBEKISTA",
   },
@@ -35,7 +35,7 @@ const projects = [
     title: "Burger Landing",
     description:
       "A modern and responsive burger landing page featuring delicious food visuals.",
-    image: "/images/projects/burger2.jpg",
+    image: "/images/projects/burger2.webp",
     demo: "https://burger-landing-neon.vercel.app",
     github: "https://github.com/MadinaSharapova97/Burger_Landing",
   },

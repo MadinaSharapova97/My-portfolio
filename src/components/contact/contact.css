@@ -4,7 +4,6 @@
   background: var(--background);
   color: var(--foreground);
   scroll-margin-top: 88px;
-  /* border: solid 1px red; */
 }
 
 .contact-reveal {
@@ -29,7 +28,6 @@
 .contact-intro {
   min-width: 0;
 }
-
 
 .contact-title {
   margin-bottom: 30px;
@@ -92,15 +90,8 @@
   transition: color 0.2s ease;
 }
 
-.contact-item-copy a:hover {
-  color: var(--main-color);
-}
 
-.contact-item-copy a:focus-visible {
-  border-radius: 3px;
-  outline: 2px solid var(--main-color);
-  outline-offset: 3px;
-}
+
 
 /* ================= CONTACT FORM PANEL ================= */
 
@@ -209,12 +200,13 @@
 
 
 .contact-submit {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-self: center;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   width: 60%;
   min-height: 30px;
   padding: 9px 18px;
@@ -222,18 +214,38 @@
   border: 1px solid var(--main-color);
   border-radius: 30px;
 
-  background: var(--main-color);
-  color: var(--background);
+  background: transparent;
+  color: var(--main-color);
 
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
+  transition: color 0.3s ease;
+  
 }
 
-.contact-submit span {
-  font-size: 1.1rem;
-  transition: transform 0.3s ease;
+.contact-submit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 0;
+  border-radius: inherit;
+  background-color: var(--main-color);
+  transition: width 0.4s ease;
+  
 }
+
+.contact-submit:hover::before {
+  width: 100%;
+
+}
+
+.contact-submit:hover {
+  color: var(--surface);
+}
+
+
 
 /* ================= RESPONSIVE ================= */
 
@@ -245,11 +257,12 @@
 }
 
 @media (max-width: 480px) {
-  .contact-container{
+  .contact-container {
 
     grid-template-columns: 1fr;
     gap: 40px;
   }
+
   .form-row {
     grid-template-columns: 1fr;
     gap: 19px;
